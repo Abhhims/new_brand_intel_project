@@ -1,0 +1,167 @@
+# Beyond Cloud Brand Intelligence — full stack (decision D-16).
+#   Infra only (local development):  docker compose -f deploy/docker-compose.yml up -d postgres redis minio
+#   + test website for automated tests:  docker compose -f deploy/docker-compose.yml --profile test up -d fixtures
+#   Everything:                       docker compose -f deploy/docker-compose.yml --profile app up -d --build
+name: brandintel
+
+x-backend: &backend
+  image: brandintel-backend:latest
+  build:
+    context: ..
+    dockerfile: deploy/backend.Dockerfile
+  env_file: .env
+  environment:
+    DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+    REDIS_URL: redis://redis:6379/0
+    S3_ENDPOINT_URL: http://minio:9000
+    RSPAMD_URL: http://rspamd:11333
+    CLAMAV_HOST: clamav
+  depends_on:
+    postgres: { condition: service_healthy }
+    redis: { condition: service_healthy }
+    minio: { condition: service_healthy }
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports: ["${POSTGRES_PORT:-5432}:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports: ["${REDIS_PORT:-6379}:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+
+  # Email analysis engines (phishing-email module, D-28). Optional: the module marks them "not checked" if absent.
+  rspamd:
+    image: rspamd/rspamd:latest
+    profiles: ["app"]
+    depends_on:
+      redis: { condition: service_healthy }
+    environment:
+      RSPAMD_REDIS_SERVERS: redis:6379
+    ports: ["${RSPAMD_PORT:-11333}:11333"]
+    restart: unless-stopped
+
+  clamav:
+    image: clamav/clamav:stable
+    profiles: ["app"]
+    # Virus database load takes ~1 minute on first start; large memory footprint (~1.5 GB).
+    healthcheck:
+      test: ["CMD-SHELL", "echo PING | nc -w 5 localhost 3310 | grep -q PONG"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 120s
+    ports: ["${CLAMAV_PORT:-3310}:3310"]
+    restart: unless-stopped
+
+  # S3-compatible object storage for evidence (MinIO no longer publishes images; RustFS is a drop-in)
+  minio:
+    image: rustfs/rustfs:latest
+    environment:
+      RUSTFS_ACCESS_KEY: ${S3_ACCESS_KEY}
+      RUSTFS_SECRET_KEY: ${S3_SECRET_KEY}
+      RUSTFS_CONSOLE_ENABLE: "true"
+      RUSTFS_ADDRESS: ":9000"
+      RUSTFS_CONSOLE_ADDRESS: ":9001"
+    ports: ["${MINIO_PORT:-9000}:9000", "${MINIO_CONSOLE_PORT:-9001}:9001"]
+    volumes: [miniodata:/data]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:9000/health || curl -fs http://127.0.0.1:9000/health"]
+      interval: 5s
+      retries: 30
+    restart: unless-stopped
+
+  # Test website for the automated acceptance tests only (AC-03, AC-08). Not part of the product:
+  #   docker compose -f deploy/docker-compose.yml --profile test up -d fixtures
+  fixtures:
+    image: nginx:alpine
+    profiles: ["test"]
+    volumes:
+      - ../backend/tests/fixtures/site:/usr/share/nginx/html:ro
+    ports: ["${FIXTURES_PORT:-8088}:80"]
+    restart: unless-stopped
+
+  api:
+    <<: *backend
+    profiles: ["app"]
+    command: sh -c "alembic upgrade head && python -m scripts.bootstrap && uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers"
+    ports: ["${API_PORT:-8010}:8000"]
+
+  worker:
+    <<: *backend
+    profiles: ["app"]
+    command: celery -A app.workers.celery_app worker -Q default -c 4 --loglevel=INFO
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.workers.celery_app inspect ping -d celery@$$HOSTNAME -t 10 | grep -q pong"]
+      interval: 60s
+      timeout: 20s
+      start_period: 60s
+
+  # Browser work (screenshots, page images) runs on its own queue and network (D-18)
+  browser-worker:
+    <<: *backend
+    profiles: ["app"]
+    command: celery -A app.workers.celery_app worker -Q browser -c 5 --loglevel=INFO
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.workers.celery_app inspect ping -d celery@$$HOSTNAME -t 10 | grep -q pong"]
+      interval: 60s
+      timeout: 20s
+      start_period: 60s
+    shm_size: 2gb  # 5 parallel Chromium scans share /dev/shm
+
+  beat:
+    <<: *backend
+    profiles: ["app"]
+    command: celery -A app.workers.celery_app beat --loglevel=INFO --schedule /tmp/celerybeat-schedule
+    healthcheck:
+      disable: true
+
+  # Live Certificate Transparency stream (D-52). Opt-in: docker compose --profile app --profile certstream up -d
+  # certstream-server-go is a third-party image (github.com/d-Rickyy-b/certstream-server-go); it reads the public
+  # CT logs and serves the stream on ws://certstream:8080 inside this network only (no port published).
+  certstream:
+    image: 0rickyy0/certstream-server-go:latest
+    profiles: ["certstream"]
+    restart: unless-stopped
+
+  # Keeps brand-named hosts from the stream in Redis for the domain scan
+  certwatch:
+    <<: *backend
+    profiles: ["certstream"]
+    command: python -m app.workers.certwatch
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      certstream: { condition: service_started }
+
+  web:
+    image: brandintel-web:latest
+    profiles: ["app"]
+    build:
+      context: ../frontend
+      dockerfile: ../deploy/frontend.Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8010}
+    ports: ["${WEB_PORT:-3000}:3000"]
+    depends_on: [api]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  miniodata:

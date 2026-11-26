@@ -1,0 +1,10 @@
+From: broken@example.org
+To: recipient@example.org
+Subject: TEST malformed MIME
+Message-ID: <fixture-malformed-001@example.org>
+Content-Type: multipart/mixed; boundary="never-closed"
+
+--never-closed
+Content-Type: text/plain
+
+TEST FIXTURE body without a closing boundary https://example.org/x

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Zentrova Bank | Secure Login - Verify your account</title>
+<link rel="icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ body{font-family:Arial,Helvetica,sans-serif;background:#eef3fb;margin:0}
+ header{background:#0e388c;color:#fff;padding:14px 28px;display:flex;align-items:center;gap:14px}
+ header img{width:54px;height:54px} .box{max-width:380px;margin:60px auto;background:#fff;padding:28px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+ input{width:100%;padding:10px;margin:6px 0 14px;border:1px solid #c9d3e3;border-radius:6px;box-sizing:border-box}
+ button{width:100%;padding:12px;background:#1c6edc;color:#fff;border:0;border-radius:6px;font-size:15px}
+ .warn{background:#fff6d6;border:1px solid #f1d27a;padding:10px;border-radius:6px;font-size:13px}
+</style></head>
+<body>
+<!-- TEST FIXTURE: simulated phishing page for the fictional brand "Zentrova Bank" (acceptance tests AC-03 / AC-08). -->
+<header><img src="/logo-copy.jpg" alt="Zentrova Bank"><strong>Zentrova Bank Online</strong></header>
+<div class="box">
+ <p class="warn">Your account has been temporarily suspended. Please verify your identity to restore secure access.</p>
+ <form action="/collect" method="post">
+  <label>Customer ID / Account number</label><input name="account">
+  <label>Password</label><input type="password" name="password">
+  <label>Card number for verification</label><input name="card">
+  <button type="submit">Sign in securely</button>
+ </form>
+ <p style="font-size:12px;color:#666">Payment and login protected. &copy; Zentrova Bank</p>
+</div>
+</body></html>

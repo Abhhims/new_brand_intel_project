@@ -1,0 +1,4 @@
+{
+  "_comment": "Extra websites to crawl for the brand logo, besides discovered suspicious domains.",
+  "results": ["{base}/partner/", "{base}/innocent/"]
+}

@@ -1,0 +1,42 @@
+{
+  "_comment": "Simulated DNS / WHOIS / web for the demo brand. 'web' is where the domain's website is served from (the fixtures site). IPs are documentation ranges (RFC 5737).",
+  "zentrova-login.com": {
+    "a": ["203.0.113.10"], "mx": ["10 mx1.zentrova-login.com"], "ns": ["ns1.cheapdns.example"],
+    "whois": {"registrar": "NameCheapish Registrar", "created": "2026-10-01", "registrant_country": "PA"},
+    "web": "{base}/",
+    "tls": {"present": true, "issuer_cn": "R11", "issuer_org": "Let's Encrypt", "subject_cn": "zentrova-login.com", "not_after": "2026-12-30T00:00:00+00:00", "expired": false, "self_signed": false}
+  },
+  "zentr0va.com": {
+    "a": ["198.51.100.20"], "mx": ["10 mail.zentr0va.com"], "ns": ["ns1.parking.example"],
+    "whois": {"registrar": "Example Registrar Inc", "created": "2026-09-28", "registrant_country": "RU"},
+    "web": null, "tls": null
+  },
+  "zentorva.in": {
+    "a": ["198.51.100.33"], "mx": [], "ns": ["ns1.parking.example"],
+    "whois": {"registrar": "Example Registrar Inc", "created": "2026-09-30"},
+    "web": null, "tls": null
+  },
+  "zentrova.org": {
+    "a": ["198.51.100.40"], "mx": [], "ns": ["ns1.parking.example"],
+    "whois": {"registrar": "Parked Domains LLC", "created": "2025-03-11"},
+    "web": "{base}/innocent/", "tls": null
+  },
+  "zentrova-offers.co": {
+    "a": ["203.0.113.55"], "mx": [], "ns": ["ns1.cheapdns.example"],
+    "whois": {"registrar": "NameCheapish Registrar", "created": "2026-10-03"},
+    "web": "{base}/partner/",
+    "tls": {"present": true, "issuer_cn": "R10", "issuer_org": "Let's Encrypt", "subject_cn": "zentrova-offers.co", "not_after": "2027-01-01T00:00:00+00:00", "expired": false, "self_signed": false}
+  },
+  "secure-zentrova-banking.in": {
+    "a": ["203.0.113.77"], "mx": ["10 mx.secure-zentrova-banking.in"], "ns": ["ns1.cheapdns.example"],
+    "whois": {"registrar": "NameCheapish Registrar", "created": "2026-10-05"},
+    "web": "{base}/",
+    "tls": {"present": true, "issuer_cn": "R11", "issuer_org": "Let's Encrypt", "subject_cn": "secure-zentrova-banking.in", "not_after": "2027-01-03T00:00:00+00:00", "expired": false, "self_signed": false}
+  },
+  "zentrova.net": {
+    "a": ["198.51.100.41"], "mx": ["10 mx.parking.example"], "ns": ["ns1.parking.example"],
+    "whois": {"registrar": "Parked Domains LLC", "created": "2026-09-20"},
+    "web": "{base}/parked/",
+    "tls": {"present": true, "issuer_cn": "R11", "issuer_org": "Let's Encrypt", "subject_cn": "zentrova.net", "not_after": "2027-01-01T00:00:00+00:00", "expired": false, "self_signed": false}
+  }
+}

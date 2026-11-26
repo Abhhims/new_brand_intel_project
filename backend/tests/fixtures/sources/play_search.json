@@ -1,0 +1,19 @@
+{
+  "_comment": "Simulated Google Play search results (google-play-scraper format).",
+  "results": [
+    {"appId": "com.zentrova.mobile", "title": "Zentrova Bank", "developer": "Zentrova Bank Ltd", "installs": "1,000,000+",
+     "icon": "{base}/apk/icon.png", "summary": "Official Zentrova Bank app", "updated": 1790000000, "version": "8.1.0",
+     "url": "https://play.google.com/store/apps/details?id=com.zentrova.mobile"},
+    {"appId": "com.quickloan.zentrovahelper", "title": "Zentrova Bank Loan Helper", "developer": "QuickLoan Apps",
+     "installs": "10,000+", "icon": "{base}/apk/icon.png",
+     "summary": "Instant loans for Zentrova Bank customers. Login with your Zentrova netbanking ID.",
+     "updated": 1791000000, "version": "1.4",
+     "url": "https://play.google.com/store/apps/details?id=com.quickloan.zentrovahelper"},
+    {"appId": "com.payfast.zupi", "title": "UPI Pay for Zentrova", "developer": "Payfast Dev", "installs": "5,000+",
+     "icon": "{base}/partner/other-partner.png", "summary": "Use Zentrova UPI faster.", "updated": 1791500000,
+     "version": "2.0", "url": "https://play.google.com/store/apps/details?id=com.payfast.zupi"},
+    {"appId": "com.zengarden.relax", "title": "Zen Garden Relax", "developer": "Calm Studio", "installs": "100,000+",
+     "icon": "{base}/innocent/tree.png", "summary": "Meditation sounds", "updated": 1780000000, "version": "3.3",
+     "url": "https://play.google.com/store/apps/details?id=com.zengarden.relax"}
+  ]
+}

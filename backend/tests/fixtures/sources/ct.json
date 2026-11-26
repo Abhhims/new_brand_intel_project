@@ -1,0 +1,8 @@
+{
+  "_comment": "Simulated Certificate Transparency search results (crt.sh JSON format) for %zentrova%.",
+  "results": [
+    {"name_value": "secure-zentrova-banking.in\nwww.secure-zentrova-banking.in", "issuer_name": "C=US, O=Let's Encrypt, CN=R11", "not_before": "2026-10-05T08:12:00"},
+    {"name_value": "zentrova-login.com", "issuer_name": "C=US, O=Let's Encrypt, CN=R11", "not_before": "2026-10-01T10:00:00"},
+    {"name_value": "www.zentrova.com", "issuer_name": "C=US, O=DigiCert Inc, CN=DigiCert Global G2", "not_before": "2026-06-01T00:00:00"}
+  ]
+}

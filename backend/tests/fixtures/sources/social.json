@@ -1,0 +1,22 @@
+{
+  "_comment": "Simulated social profiles found for the demo brand.",
+  "results": [
+    {"platform": "X", "username": "zentrova_support", "display_name": "Zentrova Bank Support", "followers": 1284,
+     "bio": "Official Zentrova Bank customer care. DM us your account number for instant help. 24/7 support desk.",
+     "avatar_url": "{base}/social/avatar.png", "profile_url": "{base}/social/zentrova_support.html"},
+    {"platform": "Instagram", "username": "zentrovabank.official", "display_name": "Zentrova Bank", "followers": 532,
+     "bio": "Giveaway! Win 50,000 - verify your Zentrova account via link in bio",
+     "avatar_url": "{base}/social/avatar.png", "profile_url": null},
+    {"platform": "Telegram", "username": "zentrova_helpdesk", "display_name": "Zentrova Helpdesk", "followers": 211,
+     "bio": "Customer care channel. Contact admin for KYC update.",
+     "avatar_url": "{base}/partner/other-partner.png", "profile_url": null},
+    {"platform": "Facebook", "username": "ZentrovaBankCare", "display_name": "Zentrova Bank Customer Care", "followers": 98,
+     "bio": "Helpline for Zentrova Bank customers", "avatar_url": null, "profile_url": null},
+    {"platform": "LinkedIn", "username": "zentrova-bank-careers-hr", "display_name": "Zentrova Bank Careers", "followers": 45,
+     "bio": "Hiring now! Pay registration fee to apply.", "avatar_url": null, "profile_url": null},
+    {"platform": "X", "username": "zentrovabank", "display_name": "Zentrova Bank", "followers": 250000,
+     "bio": "The official account of Zentrova Bank", "avatar_url": "{base}/social/avatar.png", "profile_url": null},
+    {"platform": "X", "username": "zen_trivia", "display_name": "Zen Trivia Night", "followers": 80,
+     "bio": "Weekly quiz", "avatar_url": "{base}/innocent/tree.png", "profile_url": null}
+  ]
+}

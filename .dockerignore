@@ -1,0 +1,15 @@
+**/.venv
+**/node_modules
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/.next
+.git
+frontend
+docs
+backend/reports
+deploy/.env
+backend/tests
+backend/scripts/seed_demo.py
+backend/scripts/build_apk_fixtures.py
+backend/scripts/build_email_fixtures.py

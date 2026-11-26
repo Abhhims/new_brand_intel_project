@@ -1,0 +1,63 @@
+{
+  "_comment": "Fictional TEST brand for the automated tests only (D-09, D-32). Loaded by backend/tests/support/seed_test_brand.py.",
+  "name": "Zentrova Bank",
+  "description": "Fictional retail bank used for demos and acceptance tests. Every source for this brand is simulated from fixtures/.",
+  "keywords": [
+    "zentrova",
+    "zentrova bank"
+  ],
+  "product_terms": [
+    "zentrova pay",
+    "zentrova upi",
+    "zentrova netbanking"
+  ],
+  "demo_mode": true,
+  "allowlist": [
+    {
+      "kind": "domain",
+      "value": "zentrova.com"
+    },
+    {
+      "kind": "domain",
+      "value": "zentrovabank.com"
+    },
+    {
+      "kind": "email_domain",
+      "value": "zentrova.com"
+    },
+    {
+      "kind": "package",
+      "value": "com.zentrova.mobile"
+    },
+    {
+      "kind": "publisher",
+      "value": "Zentrova Bank Ltd"
+    },
+    {
+      "kind": "social_handle",
+      "value": "zentrovabank"
+    },
+    {
+      "kind": "social_handle",
+      "value": "zentrova_official"
+    },
+    {
+      "kind": "signing_cert",
+      "value": "89D38AFD9BE50ADF1833628E825A05869CCDB2D85254CDF07209CAE14B115EFC"
+    }
+  ],
+  "assets": [
+    {
+      "kind": "logo",
+      "file": "logo.png"
+    },
+    {
+      "kind": "favicon",
+      "file": "favicon.ico"
+    },
+    {
+      "kind": "app_icon",
+      "file": "app_icon.png"
+    }
+  ]
+}

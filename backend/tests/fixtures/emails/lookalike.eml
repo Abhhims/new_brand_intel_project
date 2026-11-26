@@ -1,0 +1,63 @@
+Return-Path: <bounce@zentr0va-mail.com>
+Received: from relay.zentr0va-mail.com (relay.zentr0va-mail.com [45.33.22.11])
+ by mx.example.org; Wed, 08 Oct 2026 09:30:01 +0000
+Received:
+ from [10.0.0.7] by relay.zentr0va-mail.com; Wed, 08 Oct 2026 09:30:00 +0000
+Authentication-Results: mx.example.org; spf=fail
+ smtp.mailfrom=zentr0va-mail.com; dkim=none; dmarc=fail
+ header.from=zentr0va-mail.com
+From: "Zentrova Test Sender" <notice@zentr0va-mail.com>
+Reply-To: other-desk@example.org
+To: recipient@example.org
+Subject: TEST: Zentrova notice
+Date: Thu, 08 Oct 2026 09:30:00 +0000
+Message-ID: <fixture-lookalike-001@zentr0va-mail.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============1139401385539072192=="
+
+--===============1139401385539072192==
+Content-Type: multipart/alternative;
+ boundary="===============8598638230583392963=="
+
+--===============8598638230583392963==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+TEST FIXTURE - structural sample for automated tests, not a real message.
+Keywords for the language rule: login verify payment.
+Obfuscated link: hxxps://zentr0va-mail[.]com/form
+
+--===============8598638230583392963==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>TEST FIXTURE - structural sample for automated tests, not a re=
+al message.</p><a href=3D"https://zentr0va-mail.com/form?id=3D1">https://www.=
+zentrova.com/account</a><a href=3D"https://nam12.safelinks.protection.outlook=
+.com/?url=3Dhttps%3A%2F%2Fwrapped.zentr0va-mail.com%2Fp&amp;data=3Dx">wrapped=
+</a><img src=3D"https://images.zentr0va-mail.com/logo.png"></body></html>
+
+--===============8598638230583392963==--
+
+--===============1139401385539072192==
+Content-Type: application/zip
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="statement.zip"
+MIME-Version: 1.0
+
+UEsDBBQAAAAAALFTSF15/ZfPbQAAAG0AAAARAAAAc3RhdGVtZW50LnBkZi5leGVNWgAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABU
+RVNUIEZJWFRVUkUgcGxhY2Vob2xkZXIsIG5vdCBhbiBleGVjdXRhYmxlUEsBAhQAFAAAAAAAsVNI
+XXn9l89tAAAAbQAAABEAAAAAAAAAAAAAAIABAAAAAHN0YXRlbWVudC5wZGYuZXhlUEsFBgAAAAAB
+AAEAPwAAAJwAAAAAAA==
+
+--===============1139401385539072192==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="notice.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKJSBURVNUIEZJWFRVUkUK
+
+--===============1139401385539072192==--

@@ -1,0 +1,17 @@
+{
+  "_comment": "Simulated APK repository search results (APKPure / APKMirror style listings). See backend/scripts/build_apk_fixtures.py for the signed test APKs.",
+  "results": [
+    {"site": "apkpure-sim", "title": "Zentrova Mobile Banking", "package": "com.zentrova.mobilebanking.secure", "version": "5.2",
+     "developer": "ZB Apps Studio", "listing_url": "{base}/apk/listing-zentrova-mobile-banking.html",
+     "icon_url": "{base}/apk/icon.png", "download_url": "{base}/apk/zentrova-mobile-banking-v5.2.apk"},
+    {"site": "apkmirror-sim", "title": "Zentrova Bank", "package": "com.zentrova.mobile", "version": "8.1.0",
+     "developer": "Zentrova Bank Ltd", "listing_url": "{base}/apk/listing-official.html",
+     "icon_url": "{base}/apk/icon.png", "download_url": "{base}/apk/zentrova-bank-official-8.1.0.apk"},
+    {"site": "modapk-sim", "title": "Zentrova Bank (MOD, no ads)", "package": "com.zentrova.mobile", "version": "8.1.0",
+     "developer": "Zentrova Bank Ltd", "listing_url": "{base}/apk/listing-mod.html",
+     "icon_url": "{base}/apk/icon.png", "download_url": "{base}/apk/zentrova-bank-mod-8.1.0.apk"},
+    {"site": "apkcombo-sim", "title": "Zen Tasks - To-do list", "package": "com.zentasks.app", "version": "2.0",
+     "developer": "Zen Labs", "listing_url": "{base}/apk/listing-zentasks.html",
+     "icon_url": "{base}/innocent/tree.png", "download_url": null}
+  ]
+}

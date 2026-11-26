@@ -1,0 +1,13 @@
+{
+  "_comment": "Simulated search-engine results for exposed documents (filetype:pdf|xlsx|docx|pptx zentrova).",
+  "results": [
+    {"title": "Zentrova Bank - Internal Salary Review 2026", "url": "{base}/docs/Zentrova_Internal_Salary_Review_2026.pdf",
+     "snippet": "CONFIDENTIAL - INTERNAL USE ONLY Zentrova Bank salary review", "source": "search-engine"},
+    {"title": "zentrova_customer_list_internal.xlsx", "url": "{base}/docs/zentrova_customer_list_internal.xlsx",
+     "snippet": "Zentrova Bank customer list", "source": "public-share-link"},
+    {"title": "Zentrova Bank internal memo", "url": "{base}/docs/zentrova_it_memo.docx",
+     "snippet": "Internal memo IVR", "source": "search-engine"},
+    {"title": "Zentrova home loans brochure", "url": "{base}/docs/zentrova_home_loans_brochure.docx",
+     "snippet": "Public brochure", "source": "search-engine"}
+  ]
+}

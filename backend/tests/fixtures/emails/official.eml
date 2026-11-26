@@ -1,0 +1,15 @@
+Received: from mail.zentrova.com (mail.zentrova.com [198.51.100.20]) by
+ mx.example.org; Wed, 08 Oct 2026 10:00:00 +0000
+Authentication-Results: mx.example.org; spf=pass smtp.mailfrom=zentrova.com;
+ dkim=pass header.d=zentrova.com; dmarc=pass header.from=zentrova.com
+From: "Zentrova" <updates@zentrova.com>
+To: recipient@example.org
+Subject: TEST: Zentrova monthly statement
+Date: Thu, 08 Oct 2026 09:30:00 +0000
+Message-ID: <fixture-official-001@zentrova.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+TEST FIXTURE - structural sample for automated tests, not a real message.
+Your statement is ready. Login at https://www.zentrova.com/account

@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+*.egg-info
+.venv
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+backend/reports/
+
+# Node / Next.js
+node_modules/
+.next/
+
+# Secrets — never commit; deploy/.env.example is the template
+.env
+deploy/.env
+
+# Note: backend/wheels/ IS committed (locally built wheels for sdist-only packages)
+.superpowers/
+
+# Playwright MCP browser session output
+.playwright-mcp/
